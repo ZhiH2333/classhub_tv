@@ -25,14 +25,16 @@ void main() {
   testWidgets('Navigation changes page content', (WidgetTester tester) async {
     await tester.pumpWidget(const ClassHubTVApp());
 
-    // Tap on Folder navigation item
-    await tester.tap(find.text('Folder'));
-    await tester.pumpAndSettle();
+    // Tap on Settings navigation item
+    await tester.tap(find.text('Settings'));
+    // Use pump instead of pumpAndSettle to avoid Timer issues from Dashboard
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 100));
 
-    // Verify Folder page title is now prominent (large heading)
-    final folderTexts = tester.widgetList<Text>(find.text('Folder'));
+    // Verify Settings page title is now prominent (large heading)
+    final settingsTexts = tester.widgetList<Text>(find.text('Settings'));
     expect(
-      folderTexts.length,
+      settingsTexts.length,
       greaterThanOrEqualTo(2),
     ); // Nav label + page title
   });
