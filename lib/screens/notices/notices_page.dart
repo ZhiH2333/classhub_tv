@@ -441,98 +441,110 @@ class _AddNoticeDialogState extends State<_AddNoticeDialog> {
       child: Container(
         width: 500,
         padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Add Notice',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: AppTheme.textPrimary,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Add Notice',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: AppTheme.textPrimary,
+                ),
               ),
-            ),
-            const SizedBox(height: 24),
+              const SizedBox(height: 24),
 
-            // Title 输入
-            const Text(
-              'Title',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppTheme.textSecondary,
-              ),
-            ),
-            const SizedBox(height: 8),
-            TextField(
-              controller: _titleController,
-              style: const TextStyle(fontSize: 18, color: AppTheme.textPrimary),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: AppTheme.backgroundColor,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide.none,
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 16,
-                ),
-                hintText: 'Enter title...',
-                hintStyle: TextStyle(
-                  color: AppTheme.textSecondary.withValues(alpha: 0.5),
+              // Title 输入
+              const Text(
+                'Title',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: AppTheme.textSecondary,
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
+              const SizedBox(height: 8),
+              TextField(
+                controller: _titleController,
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: AppTheme.textPrimary,
+                ),
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: AppTheme.backgroundColor,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 16,
+                  ),
+                  hintText: 'Enter title...',
+                  hintStyle: TextStyle(
+                    color: AppTheme.textSecondary.withValues(alpha: 0.5),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
 
-            // Content 输入
-            const Text(
-              'Content',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppTheme.textSecondary,
-              ),
-            ),
-            const SizedBox(height: 8),
-            TextField(
-              controller: _contentController,
-              maxLines: 5,
-              style: const TextStyle(fontSize: 16, color: AppTheme.textPrimary),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: AppTheme.backgroundColor,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide.none,
-                ),
-                contentPadding: const EdgeInsets.all(16),
-                hintText: 'Enter content...',
-                hintStyle: TextStyle(
-                  color: AppTheme.textSecondary.withValues(alpha: 0.5),
+              // Content 输入
+              const Text(
+                'Content',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: AppTheme.textSecondary,
                 ),
               ),
-            ),
-            const SizedBox(height: 32),
+              const SizedBox(height: 8),
+              TextField(
+                controller: _contentController,
+                maxLines: 5,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: AppTheme.textPrimary,
+                ),
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: AppTheme.backgroundColor,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
+                  ),
+                  contentPadding: const EdgeInsets.all(16),
+                  hintText: 'Enter content...',
+                  hintStyle: TextStyle(
+                    color: AppTheme.textSecondary.withValues(alpha: 0.5),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32),
 
-            // 按钮
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                // 取消按钮
-                _DialogButton(
-                  label: 'Cancel',
-                  isPrimary: false,
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                const SizedBox(width: 16),
-                // 保存按钮
-                _DialogButton(label: 'Save', isPrimary: true, onPressed: _save),
-              ],
-            ),
-          ],
+              // 按钮
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  // 取消按钮
+                  _DialogButton(
+                    label: 'Cancel',
+                    isPrimary: false,
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                  const SizedBox(width: 16),
+                  // 保存按钮
+                  _DialogButton(
+                    label: 'Save',
+                    isPrimary: true,
+                    onPressed: _save,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

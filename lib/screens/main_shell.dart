@@ -41,26 +41,36 @@ class _MainShellState extends State<MainShell> {
       body: Row(
         children: [
           // 左侧导航栏
-          NavigationRail(
-            selectedIndex: _selectedIndex,
-            onDestinationSelected: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-            labelType: NavigationRailLabelType.all,
-            backgroundColor: AppTheme.navRailColor,
-            minWidth: AppSizes.navRailWidth,
-            destinations: NavItem.values.map((item) {
-              return NavigationRailDestination(
-                icon: Icon(item.icon),
-                selectedIcon: Icon(item.icon),
-                label: Text(item.label),
-                padding: const EdgeInsets.symmetric(
-                  vertical: AppSizes.spacingSmall,
+          // 左侧导航栏
+          SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: MediaQuery.of(context).size.height,
+              ),
+              child: IntrinsicHeight(
+                child: NavigationRail(
+                  selectedIndex: _selectedIndex,
+                  onDestinationSelected: (index) {
+                    setState(() {
+                      _selectedIndex = index;
+                    });
+                  },
+                  labelType: NavigationRailLabelType.all,
+                  backgroundColor: AppTheme.navRailColor,
+                  minWidth: AppSizes.navRailWidth,
+                  destinations: NavItem.values.map((item) {
+                    return NavigationRailDestination(
+                      icon: Icon(item.icon),
+                      selectedIcon: Icon(item.icon),
+                      label: Text(item.label),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppSizes.spacingSmall,
+                      ),
+                    );
+                  }).toList(),
                 ),
-              );
-            }).toList(),
+              ),
+            ),
           ),
           // 分隔线
           const VerticalDivider(
